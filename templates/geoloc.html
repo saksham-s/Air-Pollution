@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Geo-Locations</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;"><a class="btn btn-outline-success" href="/" style="" role="button">Home</a>
+      </div>
+  
+    <div id="map"></div>
+    <script>
+      var locations = {{loc|safe}};
+
+      function initMap() {
+        var myLatLng = {lat: 0, lng: 0};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 3,
+          center: myLatLng
+        });
+        for (var i = locations.length - 1; i >= 0; i--) {
+          myLatLng={lat:locations[i][0],lng:locations[i][1]};
+          var marker = new google.maps.Marker({
+          position:myLatLng,
+          map: map,
+          title: locations[i][2]
+          });
+        }
+        
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCN79k-E3JDp1xSen_VOJJqM3qTqn7WvqQ&callback=initMap">
+    </script>
+  </body>
+</html>

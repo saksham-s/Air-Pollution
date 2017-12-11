@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Original vs Retweet</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
+		<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+		<!-- <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
+	</head>
+	<body> 
+		
+		<div style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;"><a class="btn btn-outline-success" href="/" style="" role="button">Home</a>
+  		</div>
+  
+		<div id="container" style="min-width: 310px; height: 400px; max-width:600px; margin:0 auto"></div>
+	</body>
+	<script type="text/javascript">	
+		var gdata = {{ input|safe }};
+		// console.log(gdata);
+		Highcharts.chart('container', {
+			chart: {
+				plotBackgroundColor: null,
+				plotBorderWidth: 0,
+				plotShadow: false
+			},
+			title:{
+				text: 'Original<br> vs <br>Retweet',
+				align: 'center',
+				verticalAlign: 'middle',
+				y: 40
+			},
+			tooltip: {
+				pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+			},
+			plotOptions: {
+				pie: {
+					dataLabels: {
+						enabled: true,
+						distance: -50,
+						style: {
+							fontWeight: 'bold',
+							color: 'white'
+						}
+					},
+					startAngle: -90,
+					endAngle: 90,
+					center: ['50%', '75%']
+				}
+			},
+			series: [{
+				type: 'pie',
+				name: 'Browser share',
+				innerSize: '50%',
+				data: [
+					gdata[0],
+					gdata[1],
+					{
+						name: 'Proprietary or Undetectable',
+						y: 0.2,
+						dataLabels: {
+							enabled: false
+						}
+					}
+				]
+			}]
+		});
+	</script>
+	
+
+	

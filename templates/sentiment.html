@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sentiment</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
+		<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+		<!-- <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
+	</head>
+	<body> 
+		
+		<div style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;"><a class="btn btn-outline-success" href="/" style="" role="button">Home</a>
+  		</div>
+  
+		<div id="container" style="height: 400px"></div>
+	</body>
+	<script type="text/javascript">	
+		var sent = {{ sent|safe }};
+		Highcharts.chart('container', {
+		    chart: {
+		        type: 'pie',
+		        options3d: {
+		            enabled: true,
+		            alpha: 45,
+		            beta: 0
+		        }
+		    },
+		    title: {
+		        text: 'Sentiment Analysis of Tweets'
+		    },
+		    tooltip: {
+		        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		    },
+		    plotOptions: {
+		        pie: {
+		            allowPointSelect: true,
+		            cursor: 'pointer',
+		            depth: 35,
+		            dataLabels: {
+		                enabled: true,
+		                format: '{point.name}'
+		            }
+		        }
+		    },
+		    series: [{
+		        type: 'pie',
+		        name: 'Browser share',
+		        data:sent
+		    }]
+		});
+	</script>

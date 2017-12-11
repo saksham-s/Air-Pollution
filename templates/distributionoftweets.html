@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tweet Distribution</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
+		<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<!-- <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
+	</head>
+	<body> 
+		<!-- <button type="button" class="btn btn-outline-success" href="/">Home</button> -->
+		<div style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;"><a class="btn btn-outline-success" href="/" style="" role="button">Home</a>
+		</div>
+  
+		<div id="container" style="height: 400px"></div>
+	</body>
+	<script type="text/javascript">	
+		var distribution = {{ dist|safe }};
+		console.log(distribution);
+		Highcharts.chart('container', {
+			chart: {
+				type: 'pie',
+				options3d: {
+					enabled: true,
+					alpha: 45
+				}
+			},
+			title: {
+				text: 'Distribution of Tweets'
+			},
+			plotOptions: {
+				pie: {
+					innerSize: 100,
+					depth: 45
+				}
+			},
+			series: [{
+				name: 'Number of Tweets',
+				data:distribution
+			}]
+		});
+
+	</script>
+	
+
+	

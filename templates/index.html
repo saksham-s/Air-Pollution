@@ -1,0 +1,138 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  
+
+    <title>Twitter Tool</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+  </head>
+
+  <body>
+  <div class="container ">
+      <header class="header clearfix">
+        <h1 class="display-4 text-center">Twitter Analysis</h1>
+        <h2 class="display-6 text-center">Air Pollution & Mumbai Rains</h1>
+        <h5 class="text-muted text-right">Saksham Suri</h3>
+      </header>
+   </div>
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+     <main role="main">     
+    <div class="container">
+      <div class="row">
+      <div class = "col-sm">  
+      <div class="jumbotron">
+        <div class="container">
+          <h2 class="display-8">Network Graph</h2>
+          <p>For both topics, three network graphs have been created. There  are one each for retweets, mentions and replies. To reduce clutter the nodes were filtered by including only those nodes having indegree and outdegree greater than a certain threshold.</p>
+          <p><a class="btn btn-primary btn-sm" target='_blank' href="/network/pollution/retweet" role="button">Air Pollution(Retweets) &raquo;</a></p>
+          <p><a class="btn btn-primary btn-sm" target='_blank' href="/network/pollution/mention" role="button">Air Pollution(Mentions) &raquo;</a></p>
+          <p><a class="btn btn-primary btn-sm" target='_blank'  href="/network/pollution/reply" role="button">Air Pollution(Replies) &raquo;</a></p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/network/rains/retweet" role="button">Mumbai Rains(Retweets) &raquo;</a></p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/network/rains/mention" role="button">Mumbai Rains(Mention) &raquo;</a></p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/network/rains/reply" role="button">Mumbai Rains(Replies) &raquo;</a></p>
+        </div>
+      </div>
+       </div>
+       <div class = "col-sm"> 
+       <div class="jumbotron">
+        <div class="container">
+          <h2 class="display-8">Geo-Location</h2>
+          <p>The tweets have been marked on the world map using Google's api and hovering over the marker gives the user's screen name. The geo-location field has been used to get the location of the tweet and as very few tweets have this enabled, the number of markers is comparatively small.</p>
+          <p><a class="btn btn-primary btn-sm" target='_blank' href="/geolocations/pollution" role="button">Air Pollution &raquo;</a></p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/geolocations/rains" role="button">Mumbai Rains &raquo;</a></p>
+        </div>
+        </div>
+      </div>
+        <div class = "col-sm">
+       <div class="jumbotron">
+        <div class="container">
+          <h2 class="display-8">Activity of Non-Affected Users</h2>
+          <p>The activity of non affected users has been analysed over the period of dates for which the tweets have been collected. Non affected users are defined as non Delhi users in case of air pollution and non Mumbai users in case of rains.</p>
+          <p><a class="btn btn-primary btn-sm" target='_blank'  href="/nonregion/pollution" role="button">Air Pollution &raquo;</a></p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/nonregion/rains" role="button">Mumbai Rains &raquo;</a></p>
+        </div>
+         </div>
+          </div>
+      </div>
+
+      <div class="row">
+      <div class = "col-sm">  
+      <div class="jumbotron">
+        <div class="container">
+          <h2 class="display-8">Top 10 Hashtags</h2>
+          <p>Top 10 hashtags have been extracted from the text of the tweets and a graph representing their counts has been plotted.</p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/top10/pollution" role="button">Air Pollution &raquo;</a></p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/top10/rains" role="button">Mumbai Rains &raquo;</a></p>
+        </div>
+      </div>
+       </div>
+       <div class = "col-sm"> 
+       <div class="jumbotron">
+        <div class="container">
+          <h2 class="display-8">Original vs. Retweets</h2>
+          <p>Out of the total number of tweets collected, the number of original and retweeted tweets has been calculated and plotted in the form of a half donut.</p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/originalvsretweet/pollution" role="button">Air Pollution &raquo;</a></p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/originalvsretweet/rains" role="button">Mumbai Rains &raquo;</a></p>
+        </div>
+        </div>
+      </div>
+        <div class = "col-sm">
+       <div class="jumbotron">
+        <div class="container">
+          <h2 class="display-8">Distribution of Favourite Count</h2>
+          <p>Tweets are often marked as favourite by users. In this part of the task, this count has been extracted from the tweet and a distribution of this count is plotted by dividing the counts into fixed size bins.</p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/favourite/pollution" role="button">Air Pollution &raquo;</a></p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/favourite/rains" role="button">Mumbai Rains &raquo;</a></p>
+        </div>
+         </div>
+          </div>
+      </div>
+
+      <div class="row">
+      <div class = "col-sm">  
+      <div class="jumbotron">
+        <div class="container">
+          <h2 class="display-8">Distribution of Tweet Type</h2>
+          <p>A distribution using count of each type of tweet(only image, only text and image with text) has been created using a pie-chart. It was seen that there are no tweets with no text as at the least each tweet contained a hastag or tag to another user.</p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/distributionoftweets/pollution" role="button">Air Pollution &raquo;</a></p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/distributionoftweets/rains" role="button">Mumbai Rains &raquo;</a></p>
+        </div>
+      </div>
+       </div>
+      <div class = "col-sm">
+       <div class="jumbotron">
+        <div class="container">
+          <h2 class="display-8">Sentiment Analysis</h2>
+          <p>The sentiment of the tweets has been analysed using a python library (afinn). The more positive a value the more positive the sentiment is and vice versa. A value of 0 means a neutral tweet. The counts for the tweets having positive, negative and neutral sentiment have been calculated and displayed using pie-chart.</p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/sentiment/pollution" role="button">Air Pollution &raquo;</a></p>
+          <p><a class="btn btn-primary btn-sm"  target='_blank' href="/sentiment/rains" role="button">Mumbai Rains &raquo;</a></p>
+        </div>
+         </div>
+          </div>
+      </div>
+
+
+
+     </div>  
+    </main>
+
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+  </body>
+</html>

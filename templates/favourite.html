@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Favourite Count Distribution</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
+		<!-- <script src="https://code.highcharts.com/modules/drilldown.js"></script> -->
+		<!-- <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	</head>
+	<body> 
+		<div style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;"><a class="btn btn-outline-success" href="/" style="" role="button">Home</a>
+  		</div>
+  
+		<div id="container"></div>
+	</body>
+	<script type="text/javascript">	
+		function histogram(data, step) {
+		    var histo = {},
+		        x,
+		        i,
+		        arr = [];
+
+		    // Group down
+		    for (i = 0; i < data.length; i++) {
+		        x = Math.floor(data[i][0] / step) * step;
+		        if (!histo[x]) {
+		            histo[x] = 0;
+		        }
+		        histo[x]++;
+		    }
+
+		    // Make the histo group into an array
+		    for (x in histo) {
+		        if (histo.hasOwnProperty((x))) {
+		            arr.push([parseFloat(x), histo[x]]);
+		        }
+		    }
+
+		    // Finally, sort the array
+		    arr.sort(function (a, b) {
+		        return a[0] - b[0];
+		    });
+
+		    return arr;
+		}
+		var data = {{ fav|safe }};
+		console.log(data);
+		Highcharts.chart('container', {
+		    chart: {
+		        type: 'column'
+		    },
+		    title: {
+		        text: 'Favourite Count Distribution'
+		    },
+		    xAxis: {
+		        gridLineWidth: 1
+		    },
+		    yAxis: [{
+		        title: {
+		            text: 'Histogram Count'
+		        }
+		    }, {
+		        opposite: true,
+		        title: {
+		            text: 'Y value'
+		        }
+		    }],
+		    series: [{
+		        name: 'Histogram',
+		        type: 'column',
+		        data: histogram(data, 2),
+		        pointPadding: 0,
+		        groupPadding: 0,
+		        pointPlacement: 'between'
+		    }]
+		});
+	</script>
+	
+
+	

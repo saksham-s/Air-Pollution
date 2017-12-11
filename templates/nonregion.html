@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Non-Affected users</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/series-label.js"></script>
+		<!-- <script src="https://code.highcharts.com/modules/exporting.js"></script> -->
+	</head>
+	<body> 
+		
+		<div style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;"><a class="btn btn-outline-success" href="/" style="" role="button">Home</a>
+  		</div>
+  		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	</body>
+	<script type="text/javascript">	
+		var dates={{dates|safe}};
+		var date_freq={{dates_freq | safe}};
+		console.log(dates); 
+		console.log(date_freq);
+		Highcharts.chart('container', {
+		    chart: {
+		        type: 'line'
+		    },
+		    title: {
+		        text: 'Tweet Activity of Non-Region users'
+		    },
+		    xAxis: {
+		        categories: dates,
+		        title: {
+		            text: 'Date'
+		        }
+		    },
+		    yAxis: {
+		        title: {
+		            text: 'Number of Tweets'
+		        }
+		    },
+		    plotOptions: {
+		        line: {
+		            dataLabels: {
+		                enabled: true
+		            },
+		            enableMouseTracking: false
+		        }
+		    },
+		    series: [{
+		        name: 'Users of Non-Affected Region',
+		        data: date_freq
+		    }]
+		});
+	</script>
+	
+
+	

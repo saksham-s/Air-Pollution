@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Top10</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
+		<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts-more.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	</head>
+	<body> 
+		<div style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;"><a class="btn btn-outline-success" href="/" style="" role="button">Home</a>
+  		</div>
+  
+		<div id="container"></div>
+		<div style="margin-left: 22em">
+
+			<button id="plain" class="btn btn-sm btn-success">Plain</button>
+			<button id="inverted" class="btn btn-sm btn-success">Inverted</button>
+			<button id="polar" class="btn btn-sm btn-success">Polar</button>
+		</div>
+	</body>
+	<script type="text/javascript">	
+		var categ={{cat|safe}};
+		var hashtags_freq={{hashtags_frequency|safe}};
+		console.log(categ);
+		console.log(hashtags_freq);
+		var chart = Highcharts.chart('container', {
+
+		    title: {
+		        text: 'Top 10 Hashtags'
+		    },
+
+		    subtitle: {
+		        text: 'Corresponding Frequencies'
+		    },
+
+		    xAxis: {
+		        categories: categ
+		    },
+
+		    series: [{
+		        type: 'column',
+		        colorByPoint: true,
+		        data: hashtags_freq,
+		        showInLegend: false
+		    }]
+
+		});
+
+
+		$('#plain').click(function () {
+		    chart.update({
+		        chart: {
+		            inverted: false,
+		            polar: false
+		        },
+		        subtitle: {
+		            text: 'Plain'
+		        }
+		    });
+		});
+
+		$('#inverted').click(function () {
+		    chart.update({
+		        chart: {
+		            inverted: true,
+		            polar: false
+		        },
+		        subtitle: {
+		            text: 'Inverted'
+		        }
+		    });
+		});
+
+		$('#polar').click(function () {
+		    chart.update({
+		        chart: {
+		            inverted: false,
+		            polar: true
+		        },
+		        subtitle: {
+		            text: 'Polar'
+		        }
+		    });
+		});
+	</script>
+	
+
+	
