@@ -3,7 +3,7 @@ Precog Task A <br>
 <br>
 In this task I have analysed tweets on two topics namely Air Pollution in Delhi and Mumbai rains.<br>
 <br>
-Higcharts, d3js and Google Maps API have been used to create the visualisations and make them interactive.<br>
+Highcharts, D3.js and Google Maps API have been used to create the visualisations and make them interactive.<br>
 <br>
 The requirements for the the python script can be found in requirements.txt.<br>
 <br>
